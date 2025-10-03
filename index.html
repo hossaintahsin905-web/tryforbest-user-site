@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>নব জাগরণ ব্লাড ডোনেট</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Hind+Siliguri:wght@700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* আপনার CSS কোড এখানে অপরিবর্তিত থাকবে */
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* Welcome Page */
+        #welcome-page {
+            background-color: #a42a2a;
+            color: #f0ebeb;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .welcome-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-style: italic;
+            font-size: 4rem;
+            margin: 0;
+        }
+
+        .to-text {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-style: italic;
+            font-size: 2.5rem;
+            margin: 10px 0;
+        }
+
+        .bengali-text {
+            font-family: 'Hind Siliguri', sans-serif;
+            font-weight: 700;
+            font-size: 2.2rem;
+            margin: 10px 0;
+        }
+
+        /* Login & Signup Page Common Styles */
+        .auth-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .auth-form {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .form-header {
+            background-color: #a42a2a;
+            color: #f0ebeb;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .form-header h1 {
+            font-family: 'Hind Siliguri', sans-serif;
+            font-size: 1.8rem;
+            margin: 0 0 10px;
+        }
+
+        .form-header p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .form-body {
+            padding: 40px;
+            background-color: #f0f2f5;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            margin-top: -20px;
+            text-align: center;
+        }
+        
+        #signup-page .form-body, #forgot-password-page .form-body {
+             background-color: #F0EBE3;
+             border-top-left-radius: 0;
+             border-top-right-radius: 0;
+             margin-top: 0;
+        }
+
+
+        .form-body h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .form-body p {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #495057;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 10px;
+            background-color: #e9ecef;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        
+        .form-group input::placeholder {
+            color: #6c757d;
+        }
+
+        .form-button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            background-color: #343a40;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .form-link {
+            margin-top: 20px;
+        }
+
+        .form-link a {
+            color: #343a40;
+            text-decoration: none;
+        }
+        
+         #signup-page .form-header, #forgot-password-page .form-header{
+            background-color: #F0EBE3;
+            color: #343a40;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        #signup-page .form-header h2, #forgot-password-page .form-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        #signup-page .form-header p, #forgot-password-page .form-header p {
+            color: #6c757d;
+        }
+
+
+        /* User Panel */
+        #user-panel {
+            padding: 20px;
+        }
+
+        .panel-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .panel-header h1 {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+
+        .user-info, .donation-history, .request-blood {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .user-info h2, .donation-history h2, .request-blood h2 {
+            border-bottom: 2px solid #a42a2a;
+            padding-bottom: 10px;
+            margin-top: 0;
+            color: #a42a2a;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item p {
+            margin: 5px 0;
+        }
+        
+        .info-item strong {
+            color: #343a40;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .panel-button {
+            display: inline-block;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #a42a2a;
+            color: #ffffff;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        #logout-btn {
+            background-color: #343a40;
+            float: right;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .welcome-text {
+                font-size: 3rem;
+            }
+            .to-text {
+                font-size: 2rem;
+            }
+            .bengali-text {
+                font-size: 1.8rem;
+            }
+            .form-body {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Welcome Page -->
+    <div id="welcome-page">
+        <h1 class="welcome-text">Welcome</h1>
+        <h2 class="to-text">To</h2>
+        <p class="bengali-text">নব জাগরণ ব্লাড ডোনেট</p>
+    </div>
+
+    <!-- Login Page -->
+    <div id="login-page" class="auth-container hidden">
+        <div class="auth-form">
+            <div class="form-header">
+                <h1>নব জাগরণ ব্লাড ডোনেট</h1>
+                <p>দাউদকান্দি, কুমিল্লা</p>
+                <p>01632547674</p>
+            </div>
+            <div class="form-body">
+                <h2>Login</h2>
+                <p>Sign in to continue.</p>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="login-email">EMAIL</label>
+                        <input type="email" id="login-email" placeholder="Your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">PASSWORD</label>
+                        <input type="password" id="login-password" placeholder="password" required>
+                    </div>
+                    <button type="submit" class="form-button">Log in</button>
+                    <div class="form-link">
+                        <a href="#" id="forgot-password-link">Forgot Password?</a>
+                    </div>
+                     <div class="form-link">
+                        <a href="#" id="signup-link-from-login">Signup !</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Signup Page -->
+    <div id="signup-page" class="auth-container hidden">
+        <div class="auth-form">
+             <div class="form-header">
+                <h2>Create new Account</h2>
+                <p>Already Registered? <a href="#" id="login-link-from-signup">Log in here.</a></p>
+            </div>
+            <div class="form-body">
+                <form id="signup-form">
+                    <div class="form-group">
+                        <label for="signup-name">NAME</label>
+                        <input type="text" id="signup-name" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-email">EMAIL</label>
+                        <input type="email" id="signup-email" placeholder="hello@reallygreatsite.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-password">PASSWORD</label>
+                        <input type="password" id="signup-password" placeholder="password" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="signup-dob">DATE OF BIRTH</label>
+                        <input type="date" id="signup-dob" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="signup-mobile">MOBILE NUMBER</label>
+                        <input type="tel" id="signup-mobile" placeholder="+880" required>
+                    </div>
+                    <button type="submit" class="form-button">Sign up</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Forgot Password Page -->
+    <div id="forgot-password-page" class="auth-container hidden">
+         <div class="auth-form">
+             <div class="form-header">
+                <h2>Forgot Password</h2>
+                <p>Enter your email for verification.</p>
+            </div>
+            <div class="form-body">
+                <form id="forgot-password-form">
+                    <div class="form-group">
+                        <label for="forgot-email">EMAIL</label>
+                        <input type="email" id="forgot-email" placeholder="Your email" required>
+                    </div>
+                    <button type="submit" class="form-button">Send Verification</button>
+                     <div class="form-link">
+                        <a href="#" id="login-link-from-forgot">Back to Login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Panel -->
+    <div id="user-panel" class="hidden">
+        <div class="panel-header">
+            <h1>স্বাগতম, <span id="user-panel-name"></span></h1>
+            <p>আপনার রক্তদান জীবন বাঁচাতে পারে।</p>
+            <button id="logout-btn" class="panel-button">Logout</button>
+        </div>
+
+        <div class="user-info">
+            <h2>বাক্তিগত তথ্য</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <p><strong>নাম:</strong> <span id="user-name-display"></span></p>
+                    <p><strong>ইমেইল:</strong> <span id="user-email-display"></span></p>
+                </div>
+                <div class="info-item">
+                     <p><strong>জন্ম তারিখ:</strong> <span id="user-dob-display"></span></p>
+                     <p><strong>মোবাইল:</strong> <span id="user-mobile-display"></span></p>
+                </div>
+                 <div class="info-item">
+                    <p><strong>রক্তের গ্রুপ:</strong> <span id="user-blood-group-display"></span></p>
+                    <p><strong>শেষ রক্তদান:</strong> <span id="user-last-donation-display"></span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="donation-history">
+            <h2>রক্তদানের ইতিহাস</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>তারিখ</th>
+                        <th>স্থান</th>
+                        <th>গ্রহীতার নাম</th>
+                    </tr>
+                </thead>
+                <tbody id="donation-history-body">
+                    <!-- Data will be loaded from Firebase -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="request-blood">
+            <h2>রক্তের জন্য আবেদন করুন</h2>
+            <form id="blood-request-form">
+                 <div class="form-group">
+                    <label for="patient-name">রোগীর নাম</label>
+                    <input type="text" id="patient-name" required>
+                </div>
+                 <div class="form-group">
+                    <label for="blood-group">রক্তের গ্রুপ</label>
+                    <input type="text" id="blood-group" required>
+                </div>
+                 <div class="form-group">
+                    <label for="location">হাসপাতালের ঠিকানা</label>
+                    <input type="text" id="location" required>
+                </div>
+                <button type="submit" class="panel-button">আবেদন জমা দিন</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK v9 (Modular) -->
+    <script type="module">
+        // Import functions from the SDKs
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-app.js";
+        import { getAuth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore.js";
+
+        // আপনার নতুন Firebase প্রজেক্টের কনফিগারেশন
+        const firebaseConfig = {
+            apiKey: "AIzaSyBIMtHysqCklicjN0Zb_4DYm-qdWxvSYbc",
+            authDomain: "tryforbest-admin.firebaseapp.com",
+            projectId: "tryforbest-admin",
+            storageBucket: "tryforbest-admin.firebasestorage.app",
+            messagingSenderId: "565910477659",
+            appId: "1:565910477659:web:9a861826d02b61474c187e",
+            measurementId: "G-7SRXJ7L10C"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // DOM Elements
+        const welcomePage = document.getElementById('welcome-page');
+        const loginPage = document.getElementById('login-page');
+        const signupPage = document.getElementById('signup-page');
+        const forgotPasswordPage = document.getElementById('forgot-password-page');
+        const userPanel = document.getElementById('user-panel');
+
+        // --- Page Switching Logic ---
+        setTimeout(() => {
+            // Check auth state before showing login page
+            if (!auth.currentUser) {
+                welcomePage.classList.add('hidden');
+                loginPage.classList.remove('hidden');
+            }
+        }, 3000);
+
+        document.getElementById('signup-link-from-login').addEventListener('click', e => { e.preventDefault(); showPage(signupPage); });
+        document.getElementById('login-link-from-signup').addEventListener('click', e => { e.preventDefault(); showPage(loginPage); });
+        document.getElementById('forgot-password-link').addEventListener('click', e => { e.preventDefault(); showPage(forgotPasswordPage); });
+        document.getElementById('login-link-from-forgot').addEventListener('click', e => { e.preventDefault(); showPage(loginPage); });
+
+        function showPage(pageToShow) {
+            [welcomePage, loginPage, signupPage, forgotPasswordPage, userPanel].forEach(page => {
+                page.classList.add('hidden');
+            });
+            pageToShow.classList.remove('hidden');
+        }
+
+        // --- Auth State Management ---
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                // User is signed in
+                showPage(userPanel);
+                await populateUserPanel(user.uid);
+            } else {
+                // User is signed out
+                if (!welcomePage.classList.contains('hidden')) return; // Don't show login if welcome is still visible
+                showPage(loginPage);
+            }
+        });
+
+        // --- Signup Logic ---
+        const signupForm = document.getElementById('signup-form');
+        signupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            const dob = document.getElementById('signup-dob').value;
+            const mobile = document.getElementById('signup-mobile').value;
+
+            try {
+                // 1. Create user in Firebase Authentication
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // 2. Save additional user info in Firestore
+                const userDocRef = doc(db, 'users', user.uid);
+                await setDoc(userDocRef, {
+                    name: name,
+                    email: email,
+                    dob: dob,
+                    mobile: mobile,
+                    bloodGroup: 'A+', // Example static data
+                    lastDonation: '১৫ই মে, ২০২৪' // Example static data
+                });
+
+                alert('Account created successfully! You are now logged in.');
+                signupForm.reset();
+                // onAuthStateChanged will handle showing the user panel
+            } catch (error) {
+                console.error('Error creating account: ', error);
+                alert('Error: ' + error.message);
+            }
+        });
+
+        // --- Login Logic ---
+        const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value; // Changed from name to email
+            const password = document.getElementById('login-password').value;
+
+            signInWithEmailAndPassword(auth, email, password)
+                .catch((error) => {
+                    console.error('Login error:', error);
+                    alert('Invalid email or password.');
+                });
+        });
+
+        // --- Forgot Password Logic ---
+        const forgotPasswordForm = document.getElementById('forgot-password-form');
+        forgotPasswordForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('forgot-email').value;
+            
+            sendPasswordResetEmail(auth, email)
+                .then(() => {
+                    alert(`A password reset link has been sent to ${email}.`);
+                    showPage(loginPage);
+                    forgotPasswordForm.reset();
+                })
+                .catch((error) => {
+                    alert('Error: ' + error.message);
+                });
+        });
+
+        // --- Logout Logic ---
+        const logoutBtn = document.getElementById('logout-btn');
+        logoutBtn.addEventListener('click', () => {
+            signOut(auth);
+        });
+
+        // --- Populate User Panel ---
+        async function populateUserPanel(userId) {
+            const userDocRef = doc(db, 'users', userId);
+            const docSnap = await getDoc(userDocRef);
+
+            if (docSnap.exists()) {
+                const userData = docSnap.data();
+                document.getElementById('user-panel-name').textContent = userData.name;
+                document.getElementById('user-name-display').textContent = userData.name;
+                document.getElementById('user-email-display').textContent = userData.email;
+                document.getElementById('user-dob-display').textContent = userData.dob;
+                document.getElementById('user-mobile-display').textContent = userData.mobile;
+                document.getElementById('user-blood-group-display').textContent = userData.bloodGroup || 'N/A';
+                document.getElementById('user-last-donation-display').textContent = userData.lastDonation || 'N/A';
+                
+                // Note: Donation history needs to be stored as a subcollection in Firestore for a real app.
+                // This example keeps it simple.
+            } else {
+                console.log("No such user document!");
+            }
+        }
+
+        // --- Blood Request Logic ---
+        const bloodRequestForm = document.getElementById('blood-request-form');
+        bloodRequestForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const requestData = {
+                patientName: document.getElementById('patient-name').value,
+                bloodGroup: document.getElementById('blood-group').value,
+                location: document.getElementById('location').value,
+                status: 'Pending',
+                timestamp: serverTimestamp() // Use server timestamp
+            };
+
+            try {
+                const docRef = await addDoc(collection(db, "bloodRequests"), requestData);
+                alert('Your request has been submitted. We will contact you soon.');
+                bloodRequestForm.reset();
+            } catch (error) {
+                console.error('Error submitting request:', error);
+                alert('Error: ' + error.message);
+            }
+        });
+    </script>
+
+</body>
+</html>
